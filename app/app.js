@@ -2,23 +2,23 @@ const { GraphQLServer } = require("graphql-yoga");
 const resolvers = require("./resolvers");
 const { importSchema } = require("graphql-import");
 const { makeExecutableSchema } = require("graphql-tools");
-const typeDefs = importSchema("./schema.graphql");
+const typeDefs = importSchema("./app/schema.graphql");
 const mongoose = require("mongoose");
-const { db } = require("./index");
+const { db } = require("./config/index");
 
 
     mongoose.connect(db.url, { useNewUrlParser: true });
     const mongo = mongoose.connection;
 
     mongo.on("error", (error) => console.log("Failed to connect to mongo", error))
-	.once("open", () => console.log("Connected to database"));
+	.once("open", () => console.log("Conectado a la BD  shiiiuuu"));
 
 
 
 
 const schema = makeExecutableSchema({
 	typeDefs,
-	resolvers,
+	resolvers
 });
 
 const server = new GraphQLServer({
@@ -29,11 +29,11 @@ const server = new GraphQLServer({
 const options = {
 	port: process.env.PORT || 8000,
 	endpoint: "/graphql",
-	playground: "/playground",
+	playground: "/playground"
 };
 
 server.start(options,
-	({ port }) => console.log(`Magic start in port ${port}`));
+	({ port }) => console.log(`Ahuevo esta corriendo en el puerto ${port}`));
 
 module.exports = { schema };
 

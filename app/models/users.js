@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema
 const UserSchema = new Schema({
@@ -31,7 +31,7 @@ const UserSchema = new Schema({
     "create_at":{
         type:Date,
         defaul:new Date()
-    },
+    }
     
 },{collection:"Users",timestamps:true});
 

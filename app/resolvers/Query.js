@@ -1,9 +1,9 @@
-const actions = require('./src/actions')
+const actions = require('../actions/userActions')
 // _ info del servidor
 //args: recibe datos
 //context: recibe meatdatos
 //info: query o mutation ejecutado
-const Users = (_, args, context, info) =>{
+const User = (_, args, context, info) =>{
     return actions.getAllUsers.then((users) => {
         return users    
     }).catch((err) => {
@@ -13,5 +13,5 @@ const Users = (_, args, context, info) =>{
 
 
 module.exports = { 
-    Users
+    User
 }

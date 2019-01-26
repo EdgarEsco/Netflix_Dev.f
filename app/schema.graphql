@@ -1,7 +1,8 @@
 type  Query {
 	# prueba:String
 	User:[User]
-	# User(id:ID!):User
+	Movie:[Movie]
+
 	
 }
 
@@ -10,8 +11,9 @@ type Mutation {
 	# login(email:String!,password:String!):Auth
 	# updateUser(id:ID,data:UserUpdateInput!):User
 	# deleteUser(id:ID):String
-	updateUser(id:ID,data:UserUpdateInput!):User
+	updateUser(_id:ID,data:UserUpdateInput!):User
 	signup(data:UserCreateInput!):Auth
+	addMovie(_id:ID, data:MovieAdd!):Movie
 }
 
 type Auth{
@@ -30,6 +32,16 @@ type User{
 	is_active:Boolean
 }
 
+type Movie{
+	_id: ID
+	title: String
+	director:String
+	categories:String
+	sinopsis:String
+	poster:String	
+	video_url:String	
+
+}
 
 
 enum GENDER {
@@ -37,12 +49,14 @@ enum GENDER {
 	Female
 }
 
-# enum  CATEGORIES{
-# 	TECH
-# 	DEV
-# 	GAME
-# 	HEALTH
-# }
+enum  CATEGORIES{
+	Comedia 
+	Drama 
+	Accion
+	Romantica 
+	Terror
+	Deportes
+}
 
 input UserCreateInput {
 	name:String!
@@ -52,6 +66,7 @@ input UserCreateInput {
 }
 
 input UserUpdateInput{
+	_id:ID
 	name:String
 	last_name:String
 	email:String
@@ -59,4 +74,14 @@ input UserUpdateInput{
 	gender:GENDER
 	is_active:Boolean
 
+}
+
+input MovieAdd{
+
+	title: String
+	director:String
+	categories:String
+	sinopsis:String
+	poster:String	
+	video_url:String	
 }

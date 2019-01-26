@@ -11,7 +11,7 @@ const MovieSchema = new Schema({
     },
     "categories":{
         type:String,
-        required:true
+        enum: ["Comedia", "Drama", "Acción", "Romántica", "Terror","Deportes"]
     },
     "sinopsis":{
         type:String,
@@ -20,7 +20,7 @@ const MovieSchema = new Schema({
     "poster":{
         type:String,
     },    
-    "video":{
+    "video_url":{
         type:String,
         required:true
     },
@@ -28,4 +28,4 @@ const MovieSchema = new Schema({
 });
 
 
-export default mongoose.model('Movies',MovieSchema);
+module.exports =  mongoose.model('Movies',MovieSchema);

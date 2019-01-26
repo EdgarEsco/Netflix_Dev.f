@@ -6,7 +6,7 @@ const DocsSchema = new Schema({
         type:String,
         required:true
     },
-    "Director":{
+    "director":{
         type:String,
     },
     "category":{
@@ -28,4 +28,4 @@ const DocsSchema = new Schema({
 });
 
 
-export default mongoose.model('Documentals', DocsSchema);
+module.exports =  mongoose.model('Docs', DocsSchema);

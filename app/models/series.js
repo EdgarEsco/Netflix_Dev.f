@@ -31,4 +31,4 @@ const SerieSchema = new Schema({
 });
 
 
-export default mongoose.model('Series',SerieSchema);
+module.exports =  mongoose.model('Series', SerieSchema);
